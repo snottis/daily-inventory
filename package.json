@@ -1,0 +1,29 @@
+{
+  "name": "ticket-inventory",
+  "version": "0.0.1",
+  "description": "Back-end for keeping daily inventory of selected products",
+  "main": "index.js",
+  "dependencies": {
+    "@koa/router": "^10.0.0",
+    "dotenv": "^8.2.0",
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-compress": "^5.0.1",
+    "koa-helmet": "^6.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
+    "prettier-eslint": "^12.0.0"
+  },
+  "scripts": {
+    "test": "test",
+    "dev": "nodemon index.js"
+  },
+  "author": "Sauli Nevalainen",
+  "license": "ISC"
+}
