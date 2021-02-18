@@ -1,5 +1,5 @@
 {
-  "name": "ticket-inventory",
+  "name": "daily-inventory",
   "version": "0.0.1",
   "description": "Back-end for keeping daily inventory of selected products",
   "main": "index.js",
@@ -9,7 +9,8 @@
     "koa": "^2.13.1",
     "koa-body": "^4.2.0",
     "koa-compress": "^5.0.1",
-    "koa-helmet": "^6.0.0"
+    "koa-helmet": "^6.0.0",
+    "mongodb": "^3.6.4"
   },
   "devDependencies": {
     "eslint": "^7.20.0",
