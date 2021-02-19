@@ -1,9 +1,9 @@
-const Router = require('@koa/router');
+const Router = require("@koa/router");
 
-const users = require('../../controllers/users.js')
+const { create } = require("../../controllers/users.js");
 
 const router = new Router();
 
-router.get('/', users.create);
+router.get("/", create);
 
 module.exports = router;

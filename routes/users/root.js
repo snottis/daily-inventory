@@ -1,11 +1,8 @@
-const Router = require('@koa/router');
-const client = require('../../db');
+const Router = require("@koa/router");
+const { getAll } = require("../../controllers/users");
 
 const router = new Router();
 
-router.get('/', async ctx => {
-  const list = await client.db().admin().listDatabases();
-  ctx.body = list;
-})
+router.get("/", getAll);
 
 module.exports = router;
