@@ -18,8 +18,9 @@ exports.deleteUser = async (username) => {
 
 exports.updateUser = async (username, password, locations, role) => {};
 
-exports.getOneUser = async (username) => {};
+exports.getOneUser = async (username, query = {}) => {};
 
 exports.getAllUsers = async () => {
-  const r = await db.collection("users").find();
+  const r = await db.collection("users").find({}).toArray();
+  return r;
 };
