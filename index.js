@@ -1,16 +1,19 @@
-const Koa = require('koa');
-const helmet = require('koa-helmet');
-const compression = require('koa-compress');
-const body = require('koa-body');
+const Koa = require("koa");
+const helmet = require("koa-helmet");
+const compression = require("koa-compress");
+const body = require("koa-body");
 
-require('dotenv').config();
+require("dotenv").config();
 
-const router = require('./routes')
-const mongo = require('./db')
+const mongo = require("./db");
+const router = require("./routes");
 
-const app = new Koa();
+const errorhandler = require("./middlewares/error-handler");
+
 async function start() {
   await mongo.connect();
+  const app = new Koa();
+  app.use(errorhandler());
   app.use(compression());
   app.use(helmet());
   app.use(body());
@@ -18,11 +21,11 @@ async function start() {
 
   app.use(async (ctx) => {
     const list = await mongo.db().admin().listDatabases();
-    list.databases.forEach(db => console.log(` - ${db.name}`));
+    list.databases.forEach((db) => console.log(` - ${db.name}`));
     ctx.body = "Hello world!";
-  })
+  });
 
-  app.listen(8000);
+  app.listen(process.env.NODE_PORT || 8000);
 }
 
 start();
