@@ -6,6 +6,7 @@ const body = require("koa-body");
 require("dotenv").config();
 
 const mongo = require("./db");
+const createIndexing = require("./db/createIndexes");
 
 const errorhandler = require("./middlewares/error-handler");
 
@@ -15,6 +16,8 @@ async function start() {
   } catch (error) {
     console.log(error);
     return;
+  } finally {
+    createIndexing();
   }
   const router = require("./routes");
   const app = new Koa();
