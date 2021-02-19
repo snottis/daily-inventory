@@ -6,7 +6,6 @@ const body = require("koa-body");
 require("dotenv").config();
 
 const mongo = require("./db");
-const router = require("./routes");
 
 const errorhandler = require("./middlewares/error-handler");
 
@@ -17,6 +16,7 @@ async function start() {
     console.log(error);
     return;
   }
+  const router = require("./routes");
   const app = new Koa();
   app.use(errorhandler);
   app.use(compression());
