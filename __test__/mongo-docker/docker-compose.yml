@@ -1,30 +1,22 @@
-version: '3.7'
+version: "3.7"
 services:
   mongo:
-    image: mongo:4.4-bionic
+    build: .
     container_name: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: pass
     ports:
-      - '27017:27017'
-    volumes:
-      - mongodb_data_container:/data/db
-      - mongodb_config:/data/configdb
-    command: [--auth]
+      - "27017:27017"
     restart: always
   mongo_express:
     image: mongo-express
     container_name: mongo_express
     depends_on:
-      - 'mongo'
+      - "mongo"
     ports:
-      - '8081:8081'
+      - "8081:8081"
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: pass
     restart: always
-
-volumes:
-  mongodb_data_container:
-  mongodb_config:
