@@ -14,7 +14,9 @@ async function start() {
   try {
     await mongo.connect();
   } catch (error) {
+    /* eslint-disable no-console */
     console.log(error);
+    /* eslint-enable */
     return;
   } finally {
     createIndexing();
@@ -31,7 +33,9 @@ async function start() {
   });
 
   app.listen(process.env.NODE_PORT || 8000);
+  /* eslint-disable no-console */
   console.log("Running server!");
+  /* eslint-enable */
 }
 
 start();
