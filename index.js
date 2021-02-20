@@ -7,7 +7,7 @@ require("dotenv").config();
 
 const mongo = require("./db");
 const createIndexing = require("./db/createIndexes");
-
+const router = require("./routes");
 const errorhandler = require("./middlewares/error-handler");
 
 async function start() {
@@ -19,7 +19,6 @@ async function start() {
   } finally {
     createIndexing();
   }
-  const router = require("./routes");
   const app = new Koa();
   app.use(errorhandler);
   app.use(compression());

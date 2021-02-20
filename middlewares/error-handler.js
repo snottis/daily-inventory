@@ -1,3 +1,8 @@
+/**
+ * Handle downstream errors. Sanitize MongoErrors
+ * @param {context} ctx
+ * @param {function} next
+ */
 module.exports = async (ctx, next) => {
   try {
     await next();

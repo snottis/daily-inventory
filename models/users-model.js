@@ -1,8 +1,7 @@
 const client = require("../db");
 
-const db = client.db(process.env.DB_NAME);
-
 exports.createUser = async (username, password, locations, role = "user") => {
+  const db = client.db(process.env.DB_NAME);
   const r = await db.collection("users").insertOne({
     username,
     password,
@@ -21,6 +20,7 @@ exports.updateUser = async (username, password, locations, role) => {};
 exports.getOneUser = async (username, query = {}) => {};
 
 exports.getAllUsers = async () => {
+  const db = client.db(process.env.DB_NAME);
   const r = await db.collection("users").find({}).toArray();
   return r;
 };
