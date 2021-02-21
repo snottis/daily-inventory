@@ -19,8 +19,8 @@ exports.updateUser = async (ctx) => {
 };
 
 exports.getOneUser = async (ctx) => {
-  const { username } = ctx.request.body;
-  const r = await service.getOneUser(username);
+  const { uname } = ctx.params;
+  const r = await service.getOneUser(uname);
   ctx.body = r;
 };
 

@@ -39,13 +39,17 @@ exports.updateUser = async (username, password, locations, role) => {
   const db = client.db(process.env.DB_NAME);
   const r = await db
     .collection("users")
-    .updateOne({ username }, { password, locations, role });
+    .updateOne(
+      { username },
+      { $set: { password, locations, role } },
+      { upsert: true }
+    );
   return r;
 };
 
 exports.getOneUser = async (username, query = {}) => {
   const db = client.db(process.env.DB_NAME);
-  const r = await db.collection("users").findOne(username);
+  const r = await db.collection("users").findOne({ username });
   return r;
 };
 
