@@ -28,7 +28,7 @@
   },
   "scripts": {
     "test": "test",
-    "dev": "nodemon index.js"
+    "dev": "nodemon --inspect index.js"
   },
   "author": "Sauli Nevalainen",
   "license": "ISC"

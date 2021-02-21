@@ -9,7 +9,7 @@ exports.createUser = async (ctx) => {
 };
 
 exports.deleteUser = async (ctx) => {
-  await validator.username.validateAsync(ctx.params);
+  await validator.username.validateAsync(ctx.request.body);
   const { username } = ctx.request.body;
   const r = await service.deleteUser(username);
   ctx.body = r;
