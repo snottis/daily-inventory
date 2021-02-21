@@ -17,6 +17,6 @@ router.put("/", updateUser);
 
 router.post("/", createUser);
 
-router.get("/:uname", getOneUser);
+router.get("/:username", getOneUser);
 
 module.exports = router;
