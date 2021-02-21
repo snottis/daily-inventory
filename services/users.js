@@ -15,6 +15,21 @@ exports.createUser = async (username, password, locations, role) => {
   return r;
 };
 
+exports.deleteUser = async (username) => {
+  const r = await model.deleteUser(username);
+  return r;
+};
+
+exports.updateUser = async (username, password, locations, role) => {
+  const hashword = await bcrypt.hash(password, bconf.rounds);
+  const r = await model.updateUser(username, hashword, locations, role);
+  return r;
+};
+
+exports.getOneUser = async (username) => {
+  const r = await model.getOneUser(username);
+  return r;
+};
 /**
  * Get all users
  */
