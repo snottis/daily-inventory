@@ -13,7 +13,15 @@ class ValidationError extends Error {
   }
 }
 
+class AuthenticationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "AuthenticationError";
+  }
+}
+
 module.exports = {
   DatabaseError,
   ValidationError,
+  AuthenticationError,
 };
