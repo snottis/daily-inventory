@@ -8,3 +8,7 @@ exports.product = Joi.object({
   lotsize: Joi.number().required(),
   hidden: Joi.boolean(),
 });
+
+exports.gtin = Joi.object({
+  gtin: Joi.string().alphanum().required(),
+});
