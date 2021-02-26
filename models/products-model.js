@@ -1,4 +1,3 @@
-const { db } = require("../db");
 const client = require("../db");
 
 exports.createProduct = async (gtin, name, value, lotsize, hidden = false) => {
