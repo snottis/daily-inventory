@@ -11,3 +11,12 @@ exports.inv = Joi.object({
     })
   ),
 });
+
+exports.get = Joi.object({
+  date: Joi.date().required(),
+  location: Joi.number.required(),
+});
+
+exports.recent = Joi.object({
+  location: Joi.number().required(),
+});
