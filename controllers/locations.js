@@ -23,6 +23,6 @@ exports.getLocations = async (ctx) => {
 exports.updateLocation = async (ctx) => {
   await validator.location.validateAsync(ctx.request.body);
   const { id, name } = ctx.request.body;
-  const r = await service.updateLocation(id);
+  const r = await service.updateLocation(id, name);
   ctx.body = r;
 };
