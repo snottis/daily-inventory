@@ -23,6 +23,7 @@ exports.updateProduct = async (gtin, name, value, lotsize, hidden) => {
       { $set: { gtin, name, value, lotsize, hidden } },
       { upsert: true }
     );
+  return r;
 };
 
 exports.deleteProduct = async (gtin) => {

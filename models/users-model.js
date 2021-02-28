@@ -47,7 +47,7 @@ exports.updateUser = async (username, password, locations, role) => {
   return r;
 };
 
-exports.getOneUser = async (username, query = {}) => {
+exports.getOneUser = async (username) => {
   const db = client.db(process.env.DB_NAME);
   const r = await db.collection("users").findOne({ username });
   return r;

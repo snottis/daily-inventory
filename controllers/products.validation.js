@@ -1,4 +1,3 @@
-const { number } = require("joi");
 const Joi = require("joi");
 
 exports.product = Joi.object({
