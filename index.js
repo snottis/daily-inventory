@@ -19,23 +19,25 @@ async function start() {
     /* eslint-enable */
     return;
   } finally {
+    console.log("Running mongo!");
     createIndexing();
   }
-  const app = new Koa();
-  app.use(errorhandler);
-  app.use(compression());
-  app.use(helmet());
-  app.use(body());
-  app.use(router.routes());
-
-  app.use(async (ctx) => {
-    ctx.body = "Hello world!";
-  });
-
-  app.listen(process.env.NODE_PORT || 8000);
-  /* eslint-disable no-console */
-  console.log("Running server!");
-  /* eslint-enable */
 }
-
 start();
+const app = new Koa();
+app.use(errorhandler);
+app.use(compression());
+app.use(helmet());
+app.use(body());
+app.use(router.routes());
+
+app.use(async (ctx) => {
+  ctx.body = "Hello world!";
+});
+
+app.listen(process.env.NODE_PORT || 8000);
+/* eslint-disable no-console */
+console.log("Running server!");
+/* eslint-enable */
+
+module.exports = app;
