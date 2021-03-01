@@ -96,8 +96,47 @@ describe("User model", () => {
         role: mockUser.role,
       });
       await model.deleteUser("not an user");
-      const deletedUser = await col.findOne({ username: mockUser.username });
+      const deletedUser = await col.findOne(
+        { username: mockUser.username },
+        { projection: { _id: 0 } }
+      );
       expect(deletedUser).toEqual(mockUser);
+    });
+  });
+  describe("Get one user", () => {
+    it("Should find one user", async () => {
+      await col.insertOne({
+        username: mockUser.username,
+        password: mockUser.password,
+        locations: mockUser.locations,
+        role: mockUser.role,
+      });
+      await col.insertOne({
+        username: "second",
+        password: "secret",
+        locations: [1],
+        role: "user",
+      });
+      const user = await model.getOneUser(mockUser.username);
+      expect(user).toMatchObject(mockUser);
+    });
+  });
+  describe("Get all users", () => {
+    it("Should find two users", async () => {
+      await col.insertOne({
+        username: mockUser.username,
+        password: mockUser.password,
+        locations: mockUser.locations,
+        role: mockUser.role,
+      });
+      await col.insertOne({
+        username: "second",
+        password: "secret",
+        locations: [1],
+        role: "user",
+      });
+      const users = await model.getAllUsers();
+      expect(users.length).toBe(2);
     });
   });
 });
