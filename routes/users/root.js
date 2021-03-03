@@ -1,5 +1,10 @@
 const Router = require("@koa/router");
 const {
+  checkJwt,
+  adminOnly,
+  selfOrAdmin,
+} = require("../../middlewares/authorization.js");
+const {
   getAll,
   deleteUser,
   updateUser,
@@ -15,7 +20,7 @@ router.delete("/", deleteUser);
 
 router.put("/", updateUser);
 
-router.post("/", createUser);
+router.post("/", checkJwt, selfOrAdmin, createUser);
 
 router.get("/:username", getOneUser);
 

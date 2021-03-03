@@ -5,10 +5,12 @@ const { secret } = require("../utils/config").jwt;
 exports.checkJwt = async (ctx, next) => {
   const authHeader = ctx.get("Authorization");
   const [method, token] = authHeader.split(" ");
-  if (method === "Bearer") {
+  if (method === "Bearer" && token) {
     const decoded = jwt.verify(token, secret);
     ctx.state.user = decoded;
     await next();
+  } else {
+    throw new AuthorizationError("Access forbidden");
   }
 };
 exports.adminOnly = async (ctx, next) => {
