@@ -1,6 +1,6 @@
 /* eslint-disable max-classes-per-file */
 
-class DatabaseError extends Error {
+export class DatabaseError extends Error {
   status: number;
   constructor(message: string) {
     super(message);
@@ -9,7 +9,7 @@ class DatabaseError extends Error {
   }
 }
 
-class ValidationError extends Error {
+export class ValidationError extends Error {
   status: number;
   constructor(message: string) {
     super(message);
@@ -18,7 +18,7 @@ class ValidationError extends Error {
   }
 }
 
-class AuthenticationError extends Error {
+export class AuthenticationError extends Error {
   status: number;
   constructor(message: string) {
     super(message);
@@ -27,7 +27,7 @@ class AuthenticationError extends Error {
   }
 }
 
-class AuthorizationError extends Error {
+export class AuthorizationError extends Error {
   status: number;
   constructor(message: string) {
     super(message);
@@ -36,7 +36,7 @@ class AuthorizationError extends Error {
   }
 }
 
-module.exports = {
+export default {
   DatabaseError,
   ValidationError,
   AuthenticationError,
