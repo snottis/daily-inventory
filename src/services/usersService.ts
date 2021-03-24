@@ -53,8 +53,8 @@ const getOne = async (id: String): Promise<any> => {
   return r;
 };
 
-const getHash = async (id: String): Promise<any> => {
-  const user = await User.findById(id, { password: 1 });
+const getHash = async (username: String): Promise<any> => {
+  const user = await User.findOne({ username }, { password: 1 });
   return user;
 };
 
