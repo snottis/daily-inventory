@@ -36,9 +36,19 @@ export class AuthorizationError extends Error {
   }
 }
 
+export class NotFoundError extends Error {
+  status: number;
+  constructor(message: string) {
+    super(message);
+    this.name = 'NotFound';
+    this.status = 404;
+  }
+}
+
 export default {
   DatabaseError,
   ValidationError,
   AuthenticationError,
   AuthorizationError,
+  NotFoundError,
 };
