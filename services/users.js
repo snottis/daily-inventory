@@ -1,6 +1,6 @@
-const bcrypt = require("bcrypt");
-const bconf = require("../utils/config").bcrypt;
-const model = require("../models/users-model");
+const bcrypt = require('bcrypt');
+const bconf = require('../utils/config').bcrypt;
+const model = require('../models/users-model');
 
 /**
  * Hash password and add user
@@ -28,6 +28,7 @@ exports.updateUser = async (username, password, locations, role) => {
 
 exports.getOneUser = async (username) => {
   const r = await model.getOneUser(username);
+  if (r) delete r.password;
   return r;
 };
 /**
