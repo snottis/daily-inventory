@@ -6,8 +6,8 @@ import validator from '../validators/loginValidator';
 export const login = async (ctx: Koa.Context) => {
   await validator.login.validateAsync(ctx.request.body);
   const { username, password } = ctx.request.body;
-  const token = await service.login(username, password);
-  ctx.body = { access_token: token };
+  const res = await service.login(username, password);
+  ctx.body = res;
 };
 
 export default { login };

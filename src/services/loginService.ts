@@ -9,12 +9,13 @@ const login = async (username: string, password: string) => {
     const result = await bcrypt.compare(password, hash.password);
     if (result) {
       const user = await users.getOne(hash._id.toString());
-      const token = jwt({
+      const access_token = jwt({
         username: user.username,
         locations: user.locations,
         role: user.role,
       });
-      return token;
+      const json = user.toJSON();
+      return { access_token, ...json };
     }
   }
   throw new AuthenticationError('Invalid username or password');
