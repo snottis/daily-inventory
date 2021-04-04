@@ -20,7 +20,19 @@ const update = async (ctx: Koa.Context) => {
   await validator.update.validateAsync(ctx.request.body);
   const { id } = ctx.params;
   const { name, gtin, value, lotsize, hidden } = ctx.request.body;
-  const res = await service.update(id, { name, gtin, value, lotsize, hidden });
+  const prod = {} as {
+    name?: string;
+    gtin?: string;
+    value?: number;
+    lotsize?: number;
+    hidden?: boolean;
+  };
+  if (name) prod.name = name;
+  if (gtin) prod.gtin = gtin;
+  if (value) prod.value = value;
+  if (hidden !== undefined) prod.hidden = hidden;
+  if (lotsize) prod.lotsize = lotsize;
+  const res = await service.update(id, prod);
   ctx.body = res;
 };
 

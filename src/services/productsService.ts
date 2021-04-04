@@ -36,10 +36,14 @@ const remove = async (id: string): Promise<any> => {
 };
 
 const update = async (id: string, product: ProductUpdate): Promise<any> => {
-  const upProduct = await Product.findById(id);
+  console.log('UPDATE', { ...product });
+  const upProduct = await Product.findByIdAndUpdate(
+    id,
+    { $set: { ...product } },
+    { new: true },
+  );
   if (!upProduct) throw new NotFoundError(`id: ${id} not found`);
-  const ret = await upProduct.update({ ...update }, { new: true });
-  return ret;
+  return upProduct;
 };
 
 export default { create, getAll, remove, update };
