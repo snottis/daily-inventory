@@ -1,23 +1,8 @@
 import Product from '../models/Product';
 import { NotFoundError } from '../utils/errors';
+import * as types from '../types/productTypes';
 
-interface ProductCreate {
-  name: string;
-  gtin: string;
-  value: number;
-  lotsize: number;
-  hidden?: boolean;
-}
-
-interface ProductUpdate {
-  name?: string;
-  gtin?: string;
-  value?: number;
-  lotsize?: number;
-  hidden?: boolean;
-}
-
-const create = async (product: ProductCreate): Promise<any> => {
+const create = async (product: types.ProductCreate): Promise<any> => {
   const newProduct = new Product(product);
   await newProduct.save();
   return newProduct;
@@ -35,7 +20,10 @@ const remove = async (id: string): Promise<any> => {
   return product;
 };
 
-const update = async (id: string, product: ProductUpdate): Promise<any> => {
+const update = async (
+  id: string,
+  product: types.ProductUpdate,
+): Promise<any> => {
   console.log('UPDATE', { ...product });
   const upProduct = await Product.findByIdAndUpdate(
     id,

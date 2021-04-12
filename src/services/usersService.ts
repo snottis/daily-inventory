@@ -13,7 +13,7 @@ const createUser = async (
   const password = await bcrypt.hash(passwordPlain, Number(config.CryptRounds));
   const user = new User({ username, password, locations, role });
   let savedUser = await user.save();
-  savedUser = await savedUser.populate('locations').execPopulate();
+  //savedUser = await savedUser.populate('locations').execPopulate();
   return savedUser;
 };
 
